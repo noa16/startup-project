@@ -21,27 +21,33 @@ const ButtonStyle = (props)=>{
 }
 const styles = StyleSheet.create({
     btnContainer:{
-    marginRight:40,
-    marginLeft:40,
-   marginTop:10,
+    backgroundColor:'white',
+    marginLeft:270,
+    marginTop:40,
     paddingTop:10,
     paddingBottom:10,
-    backgroundColor:'#1E6738',
     color:'green',
-    borderRadius:10,
+    borderRadius:100,
+    width:100,
+    height:100,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#fff',
+    position:'relative'
     
        
        
     },
     txt: {
+    position:'absolute',
+     marginTop:35,
+     marginLeft:25,
     fontSize: 16,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
-    textAlign:'center'
+    color: 'grey',
+    
+    
   },
   
 

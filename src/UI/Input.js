@@ -7,12 +7,12 @@ import {
 StyleSheet,
 } from "react-native";
 const Input=(props)=>{
-    const {placeholder} =props;
+    const {fieldName} =props;
     return(
         <View style={styles.inputContainer}>
+            <Text style={styles.fieldName}>{fieldName}:</Text>
             <TextInput
-            placeholder={placeholder}
-            onChangeText={(e)=>props.setStateFromInputField(e,placeholder)}
+            onChangeText={(e)=>props.setStateFromInputField(e,fieldName)}
             style={styles.input}/>
         </View>
     )
@@ -24,14 +24,28 @@ const styles = StyleSheet.create({
 input: {
     height: 40,
     margin: 12,
-    borderBottomWidth: 1,
+    borderBottomWidth: 13,
+    borderBottomColor:'white',
     borderRadius:0.2,
     borderStyle: 'solid',
-    borderColor: 'green'
+    borderColor: 'green',
+    width:220,
+    
+  
 
   },
   inputContainer:{
-      marginTop:4
+      marginTop:4,
+      display:'flex',
+      flexDirection:'row'
+     
+  },
+  fieldName:{
+      marginLeft:10,
+      fontSize:20,
+      color:'white',
+      marginTop:30,
+      
   }
 
 })

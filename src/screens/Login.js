@@ -10,17 +10,19 @@ import {
   TextInput,
   Alert,
 StyleSheet,
-Image
+ImageBackground,
+Image 
 } from "react-native";
 
 const Login = (props)=>{
 
 
-    const [state, setState] = useState({ FirstName: "", LastName: "" ,City:""});
+    const [state, setState] = useState({ שם: "", שםמשפחה: "" ,עיר:""});
     const [errorMessage,setErrorMessage] = useState('')
     const [checkBox,setCheckbox] = useState(false)
     const handleSubmit=()=>{
-        const msg =  ValidationLogic(state.firstName,state.LastName,state.City,checkBox)
+        const msg =  ValidationLogic(state.שם,state.שםמשפחה,state.עיר,checkBox)
+        console.log(state.שםמשפחה)
         setErrorMessage(msg.msg)
        
     }
@@ -33,28 +35,31 @@ const Login = (props)=>{
     const checkboxTest=()=>{
         setCheckbox(!checkBox)
     }
-
-    const placeholders = ["FirstName","LastName","City","Contact"]
+    const fieldNames = ["שם","שםמשפחה","עיר","איש קשר"]
     return(
         <View>
-            <View>
-                <Image style={styles.img} source={require('../images/RUS.jpg')}></Image>
-
-            </View>
-          
-          {placeholders.map((item)=>{
+         <View style={styles.containerLogin}>
+           <Image style={styles.img} source={require('../images/titleRUS.jpg')}></Image>
+            <ImageBackground  style={styles.imgBack} >       
+             {fieldNames.map((item)=>{
               
               return(
-                   <Input placeholder={item}
+                   <Input fieldName={item}
                     setStateFromInputField={setStateFromInputField}/>
               )
           })}
-         
-              
-          <CheckBox style={styles.checkboxContainer} value={checkBox} onChange={()=>checkboxTest()}/>
-          <Text>Are you confirm the Term?</Text>
-          <ButtonStyle title={"submit"} handleSubmit={handleSubmit}/>
+          <View style={styles.container}>
+               <CheckBox style={styles.checkboxContainer} value={checkBox} onChange={()=>checkboxTest()}/>
+              <Text style={styles.txt}> הנני מאשרת גישה לסמס ווטצאפ שיחות והודעות במכשיר זה</Text>
+          </View>  
+          <ButtonStyle title={"אישור"} handleSubmit={handleSubmit}/>
           <ErrorMessage errorMessage={errorMessage}/>
+
+                    
+            </ImageBackground >
+
+            </View>
+         
            
         </View>
     )
@@ -63,15 +68,31 @@ const Login = (props)=>{
 }
 
 const styles = StyleSheet.create({
-    img:{
-        height:170,
-        marginRight:15
+    imgBack:{
+        height:700,
+        width:400
     },
     checkboxContainer:{
-        marginTop:2
-     
-
-
+        marginTop:25
+    },
+    container:{
+        display:'flex',
+        flexDirection:'row'
+    },
+    txt:{
+        marginTop:30,
+        color:'white'
+    },
+    title:{
+        width:500
+    },
+    containerLogin:{
+        backgroundColor:'#71da71'
+    },
+    img:{
+        marginLeft:70,
+        height:50,
+        width:250
     }
 })
 
